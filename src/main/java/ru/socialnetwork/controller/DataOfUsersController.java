@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.socialnetwork.exception.DataOfUsersBadRequestException;
 import ru.socialnetwork.model.DataOfUsers;
 import ru.socialnetwork.service.DataOfUsersService;
+import ru.socialnetwork.service.impl.DataOfUsersServiceImpl;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
 @RequestMapping("/users")
 public class DataOfUsersController {
 
-    private final DataOfUsersService dataOfUsersService;
+    private final DataOfUsersServiceImpl dataOfUsersService;
 
     @GetMapping("/")
     public List<DataOfUsers> findAll() {
