@@ -6,5 +6,5 @@ import ru.socialnetwork.model.Users;
 import java.util.Optional;
 
 public interface UsersService extends SocialNetworkService<Users,Long> {
-    Optional<Users> findByLogin(String login);
+    Users findByLogin(String login);
 }

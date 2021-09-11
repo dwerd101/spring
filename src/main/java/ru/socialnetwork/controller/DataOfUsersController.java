@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.socialnetwork.exception.DataOfUsersBadRequestException;
 import ru.socialnetwork.model.DataOfUsers;
+import ru.socialnetwork.model.dto.DataOfUsersDto;
 import ru.socialnetwork.service.DataOfUsersService;
 import ru.socialnetwork.service.impl.DataOfUsersServiceImpl;
 
@@ -17,15 +18,16 @@ public class DataOfUsersController {
     private final DataOfUsersServiceImpl dataOfUsersService;
 
     @GetMapping("/")
-    public List<DataOfUsers> findAll() {
+    public List<DataOfUsersDto> findAll() {
         return dataOfUsersService.findAll();
     }
     @PostMapping("/add")
-    public DataOfUsers addDataOfUsers(@RequestBody DataOfUsers dataOfUsers) {
+    public DataOfUsersDto addDataOfUsers(@RequestBody DataOfUsersDto dataOfUsers) {
         return dataOfUsersService.create(dataOfUsers);
     }
     @PutMapping("/update/{id}")
-    public DataOfUsers updateDataOfUsers(@PathVariable String id, @RequestBody DataOfUsers dataOfUsers) {
+    public DataOfUsersDto updateDataOfUsers(@PathVariable String id,
+                                            @RequestBody DataOfUsersDto dataOfUsers) {
         try {
            return dataOfUsersService.update(dataOfUsers, Long.parseLong(id));
         } catch (Exception e) {
@@ -33,7 +35,7 @@ public class DataOfUsersController {
         }
     }
     @DeleteMapping("/{id}")
-    public DataOfUsers deleteDataOfUsers(@PathVariable String id) {
+    public DataOfUsersDto deleteDataOfUsers(@PathVariable String id) {
         try {
             return dataOfUsersService.delete(Long.parseLong(id));
         } catch (Exception e) {
